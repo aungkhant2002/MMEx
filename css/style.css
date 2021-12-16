@@ -1,8 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Padauk:wght@400;700&display=swap');
 
+:root {
+    --primary: #2CD1EE;
+    --secondary: #707070;
+    --light: #ffffff;
+    --dark: #000000;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Oswald', 'Padauk', sans-serif;
+    color: var(--secondary);
+}
+
+.app {
+    width: 700px;
+    margin: 100px auto;
+}
+
+.output {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+}
+
+.brand {
+    margin-left: 10px;
+    font-size: 30px;
+}
+
+.result-container {
+    display: flex;
+    align-items: center;
+}
+
+.result {
+    font-size: 50px;
+}
+
+.divider {
+    background: var(--secondary);
+    height: 5px;
 }
