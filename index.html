@@ -27,23 +27,25 @@
 
     <div class="divider"></div>
 
-    <section class="calc">
+    <form class="calc">
         <div class="input-container container">
             <label>Input</label>
-            <input type="number" id="input" class="input">
+            <input type="number" id="input" class="input" min="1" placeholder="0.00" autofocus required>
         </div>
         <div class="from-container container">
             <label>From</label>
-            <select id="from" class="from"></select>
+            <select id="from" class="from" required>
+                <option value="" selected>Select Currency</option>
+            </select>
         </div>
         <div class="to-container container">
             <label>To</label>
-            <select id="to" class="to"></select>
+            <select id="to" class="to" required></select>
         </div>
         <div class="calc-container container">
             <button class="calc-btn" id="calcBtn">Calculate</button>
         </div>
-    </section>
+    </form>
 
 </section>
 
