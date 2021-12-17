@@ -3,6 +3,7 @@ let data = {
     "description": "Official Website of Central Bank of Myanmar",
     "timestamp": "1639641600",
     "rates": {
+        "MMK": "1",
         "USD": "1,780.0",
         "SAR": "474.33",
         "LAK": "16.066",
