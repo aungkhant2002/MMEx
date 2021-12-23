@@ -2,7 +2,9 @@ let input = document.getElementById("input");
 let from = document.getElementById("from");
 let to = document.getElementById("to");
 let result = document.getElementById("result");
+let historyList = document.getElementById("historyList");
 
+// create option
 function createOption(x, y, z) {
     let o = document.createElement("option");
     let t = document.createTextNode(y);
@@ -20,6 +22,26 @@ for (x in data.rates) {
     createOption(to, x, data.rates[x]);
 }
 
+// create table row
+function createTr(x) {
+    let tr = document.createElement("tr");
+
+    x.map(function (el) {
+        let td = document.createElement("td");
+        let text = document.createTextNode(el);
+        td.appendChild(text);
+        tr.appendChild(td);
+    })
+
+    historyList.appendChild(tr);
+
+}
+
+// to store in localStorage
+function store() {
+    localStorage.setItem("record", historyList.innerHTML);
+}
+
 document.getElementById("calc").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -28,16 +50,30 @@ document.getElementById("calc").addEventListener("submit", function (e) {
     let y = from.value;
     let z = to.value;
 
-    console.log(x, y, z);
-
     // process
     let first = x * y;
     let second = first/z;
+    let fromText = x + ' ' + from.options[from.selectedIndex].innerText;
+    let toText = to.options[to.selectedIndex].innerText;
+    let result = second.toFixed(2);
+    let d = new Date().toLocaleString();
+    let arr = [d, fromText, toText, result];
+    createTr(arr);
+    store();
+
 
     // set state
-    result.innerHTML = second.toFixed(2);
+    result.innerHTML = result;
     input.value = '';
     input.focus();
     from.value = '';
     to.value = '1';
-})
+});
+
+// to show output from localStorage (IIFE function)
+(function () {
+    if (localStorage.getItem("record")) {
+        historyList.innerHTML = localStorage.getItem("record");
+    }
+})()
+
