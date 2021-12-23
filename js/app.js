@@ -3,6 +3,7 @@ let from = document.getElementById("from");
 let to = document.getElementById("to");
 let result = document.getElementById("result");
 let historyList = document.getElementById("historyList");
+let changeIcon = document.getElementById("changeIcon");
 
 // create option
 function createOption(x, y, z) {
@@ -35,7 +36,6 @@ function createTr(x) { // parameter x is an array so it can loop with map
     }
 
 
-
     let tr = document.createElement("tr");
 
     x.map(function (el) {
@@ -64,18 +64,18 @@ document.getElementById("calc").addEventListener("submit", function (e) {
 
     // process
     let first = x * y;
-    let second = first/z;
+    let second = first / z;
     let fromText = x + ' ' + from.options[from.selectedIndex].innerText;
     let toText = to.options[to.selectedIndex].innerText; // to get selected option text
-    let result = second.toFixed(2); // to get result with two decimal point
+    let resultNum = second.toFixed(2); // to get result with two decimal point
     let d = new Date().toLocaleString();
-    let arr = [d, fromText, toText, result];
+    let arr = [d, fromText, toText, resultNum];
     createTr(arr);
     store();
 
 
     // set state
-    result.innerHTML = result;
+    result.innerHTML = resultNum;
     input.value = '';
     input.focus(); // to autofocus use focus() function
     from.value = '';
@@ -91,3 +91,8 @@ document.getElementById("calc").addEventListener("submit", function (e) {
     }
 })()
 
+// night mode
+function changeMode() {
+    document.body.classList.toggle("night-mode");
+    changeIcon.classList.toggle("fa-sun")
+}

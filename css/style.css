@@ -19,6 +19,7 @@
 
 body {
     background-color: #f5f5f5;
+    transition: 1s;
 }
 
 .app {
@@ -58,6 +59,7 @@ body {
 .divider {
     background: var(--secondary);
     height: 5px;
+    border-radius: var(--br);
 }
 
 .calc {
@@ -120,7 +122,9 @@ body {
 
 /*.history tr:nth-child(even){background-color: #f2f2f2;}*/
 
-.history tr:hover {background-color: #ddd;}
+.history tr:hover {
+    background-color: #ddd;
+}
 
 .history th {
     padding-top: 12px;
@@ -132,6 +136,21 @@ body {
 
 .history th:last-child, .history td:last-child {
     text-align: right;
+}
+
+.mode-change {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #3a3b3c;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+.mode-change .fas {
+    color: var(--light);
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -146,15 +165,64 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-select::-ms-expand {	display: none; }
-select{
+select::-ms-expand {
+    display: none;
+}
+
+select {
     -webkit-appearance: none;
     appearance: none;
 }
-@-moz-document url-prefix(){
-    select { width: 110%; background-position: right 30px center !important; border: none !important;}
+
+@-moz-document url-prefix() {
+    select {
+        width: 110%;
+        background-position: right 30px center !important;
+        border: none !important;
+    }
 }
 
 select:focus, input:focus, button:focus {
     outline: none;
+}
+
+/*responsive design*/
+
+@media screen and (max-width: 420px) {
+
+    .app {
+        width: 96%;
+        margin: 30px auto;
+    }
+
+    .output {
+        flex-flow: column;
+        align-items: flex-end;
+    }
+
+    .brand-container {
+        width: 100%;
+    }
+
+    .calc {
+        flex-wrap: wrap;
+    }
+
+    .container {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .from-container, .to-container {
+        width: 46%;
+    }
+
+    .input, .from, .to {
+        padding: 10px;
+    }
+
+    .calc-btn {
+        padding: 15px 0;
+    }
+
 }
